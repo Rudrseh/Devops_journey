@@ -4,6 +4,7 @@ FROM alpine:3.24.1 AS builder
 WORKDIR /usr/src/app
 
 RUN apk add --no-cache  bash
+RUN rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
 
 COPY index.html styles.css ./
 
@@ -19,7 +20,7 @@ ENV APP_ENV="development"
 ENV NGINX_PORT=80
 
 RUN addgroup -S webuser && adduser -S webuser -G webuser
-RUN rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
+
 
 COPY --from=builder /usr/src/app /usr/share/nginx/html
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
