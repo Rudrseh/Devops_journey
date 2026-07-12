@@ -2,7 +2,8 @@ version: "3.8"
 services:
   db:
     image: mysql:8.0
-    command: "--default-authentication-plugin=mysql_native_password"
+    container_name: mysql-container
+   # command: "--default-authentication-plugin=mysql_native_password"
     volumes:
       - db_data:/var/lib/mysql
     restart: always
