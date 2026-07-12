@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   db:
-    image: mariadb:12.3.2 
+    image: mariadb:10.6.4-focal 
     container_name: mysql-container
     #command: "--default-authentication-plugin=mysql_native_password"
     volumes:
@@ -15,27 +15,19 @@ services:
     ports:
       - "3306"
       - "33060"
-    healthcheck:
-      test: ["CMD","healthcheck.sh","--connect","--innodb_initialized"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
   wordpress: 
     image: wordpress:latest
     container_name: wordpress-app
     ports:
-      - "80:80"
+      - "8000:80"
     restart: always
     depends_on:
-      db:
-        condition: service_healthy
+      - db
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: user
       WORDPRESS_DB_PASSWORD: user
       WORDPRESS_DB_NAME: mydb
-      WORDPRESS_DEBUG: 1
     volumes:
       - wp_data:/var/www/html
 
