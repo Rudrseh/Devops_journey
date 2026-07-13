@@ -49,7 +49,7 @@ services:
       - ./nginx/start-router.sh:/start-router.sh:ro
     command: ["/bin/sh", "/start-router.sh"]
     healthcheck:
-      test: ["CMD", "wget", "-q", "--spider", "http://localhost/"]
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost/health.html"]
       interval: 10s
       timeout: 5s
       retries: 5
