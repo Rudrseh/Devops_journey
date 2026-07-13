@@ -1,15 +1,15 @@
-FROM nginx:latest as development
+FROM node:20 as development
 
 WORKDIR /app
 
-COPY package*.json ./app/
+COPY package*.json ./
 
 RUN npm ci
 
-COPY . ./app
+COPY . .
 
 ENV CI=true
-ENV port=3000
+ENV PORT=3000
 
 CMD ["npm", "start"]
 
@@ -43,5 +43,3 @@ RUN rm -rf ./*
 COPY --from=build /app/build .
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
-
-
