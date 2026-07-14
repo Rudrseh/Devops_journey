@@ -96,10 +96,3 @@ secrets:
   db-password:
     file: db/password.txt
 
-volumes:
-  back-notused:
-  db-data:
-
-secrets:
-  db_password:    
-    file: db/db_password.txt
