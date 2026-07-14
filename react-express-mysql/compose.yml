@@ -19,8 +19,6 @@ services:
       - "80:80"
       - "9229:9229"
       - "9230:9230"
-    secrets:
-      - db_password
     volumes:
       - ./backend/src:/code/src:ro
       - ./backend/package.json:/code/package.json
