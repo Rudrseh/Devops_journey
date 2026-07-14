@@ -40,7 +40,7 @@ COPY --from=builder /code/build /usr/share/nginx/html
 FROM node:20 AS development
 
 ENV CI=true
-ENV PORT=3030
+ENV PORT=3030 
 
 WORKDIR /code
 
