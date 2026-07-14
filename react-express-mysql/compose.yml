@@ -78,7 +78,6 @@ services:
       target: development
     ports:
       - 3000:3000
-=======
       - "3030:3030"
     volumes:
       - ./frontend/src:/code/src
