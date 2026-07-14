@@ -1,7 +1,7 @@
 FROM node:20 AS development
 
 ENV CI=true
-ENV PORT=3000
+ENV PORT=3030
 
 WORKDIR /code
 
