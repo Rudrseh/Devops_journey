@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   name: mongo-deployment
   labels:
-    app: mongo-db
+    app: mongodb
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mongo-db
+      app: mongodb
   template:
     metadata:
       labels:
-        app: mongo-db
+        app: mongodb
     spec:
       containers:
-        - name: mongo
+        - name: mongodb
           image: mongo:8.3.4
           ports:
            - containerPort: 27017
@@ -34,10 +34,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mongo-service
+  name: mongodb-service
 spec:
   selector:
-    app: mongo-db
+    app: mongodb
   ports:
     - protocol: TCP
       port: 27017
