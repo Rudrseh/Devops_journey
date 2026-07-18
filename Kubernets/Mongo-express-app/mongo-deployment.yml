@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: mongodb
-          image: mongo:8.3.4
+          image: mongo:6.0
           ports:
            - containerPort: 27017
           env:
@@ -37,7 +37,8 @@ metadata:
   name: mongodb-service
 spec:
   selector:
-    app: mongodb
+    app: mongo-db
+  type: ClusterIP
   ports:
     - protocol: TCP
       port: 27017
