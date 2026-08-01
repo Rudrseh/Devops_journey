@@ -1,4 +1,4 @@
-apiVerison: networking.k8s.io/v1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: mongo-express-ingress
@@ -8,7 +8,10 @@ spec:
     - host: mongo-express.local
       http:
         paths:
-          services:
-            - name: mongo-express-service
-              port:
-                number: 8081
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: mongo-express
+                port:
+                  number: 8081
