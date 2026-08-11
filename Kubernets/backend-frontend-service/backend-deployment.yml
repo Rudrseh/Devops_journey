@@ -14,7 +14,7 @@ spec:
       labels:
         app: hello
         tier: backend
-      track: stable
+        track: stable
     spec:
       containers:
       - name: hello
