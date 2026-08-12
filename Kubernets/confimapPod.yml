@@ -23,5 +23,6 @@ spec:
     - name: config-volume
       configMap:
         name: game-demo
-      items:
-        - key: game.properties
+        items:
+          - key: game.properties
+            path: game.properties
