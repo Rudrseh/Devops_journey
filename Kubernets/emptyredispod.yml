@@ -30,6 +30,6 @@ spec:
     - name: redis-config
       configMap:
         name: empty-config
-      items:
-        - key: redis-config
-          path: redis.conf
+        items:
+         - key: redis-config
+           path: redis.conf
