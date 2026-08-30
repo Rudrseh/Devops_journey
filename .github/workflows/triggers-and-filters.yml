@@ -13,10 +13,11 @@ on:
         paths:
             - "03-core-features/filters/*.md"
             - "!03-core-features/triggers/*.txt"
-   # schedule:
+
+   #  schedule:
    #     - cron: '0 0 * * *'
-   workflow_dispatch:
-    
+    workflow_dispatch:
+
 
 jobs:
     trigger-and-filter-job:
