@@ -11,8 +11,8 @@ on:
             - synchronize
             - reopened
         paths:
-            - "03-core-features/filters/*.md"
-            - "!03-core-features/triggers/*.txt"
+            - "Github-Actions/03-core-features/filters/*.md"
+            - "!Github-Actions/03-core-features/triggers/*.txt"
 
    #  schedule:
    #     - cron: '0 0 * * *'
