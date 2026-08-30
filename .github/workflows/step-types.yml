@@ -11,7 +11,7 @@ jobs:
               run: echo "Running step types tests"
 
             - name: Set up Python
-              run: echo "Setting up Python environment"
+              run: print  ("Setting up Python environment")
               shell: python
 
             - name: Hello action
