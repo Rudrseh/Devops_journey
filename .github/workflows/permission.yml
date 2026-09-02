@@ -52,12 +52,7 @@ jobs:
 
             - name: Ensure label "read-only-test" does not exist
               run: |
-                if gh label list | grep -q "read-only-test"; then
-                  echo "Label 'read-only-test' already exists. Deleting it for test."
-                  gh label delete "read-only-test" --confirm
-                else
-                  echo "Label 'read-only-test' does not exist. Proceeding with test."
-                fi
+               gh label create "read-only-test" --description "Read-only test marker" --color "ededed" || true
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
