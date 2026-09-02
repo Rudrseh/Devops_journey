@@ -5,7 +5,7 @@ on:
 
 jobs:
     artifact-producer:
-       name: Artifact
+       name: Artifact Producer
        runs-on: ubuntu-latest
        steps:
          - name: Create artifact

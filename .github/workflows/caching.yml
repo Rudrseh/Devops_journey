@@ -1,0 +1,43 @@
+name: Caching
+
+on: 
+    workflow_dispatch:
+
+jobs:
+    action-cache:
+      name: prime demo cache
+      runs-on: ubuntu-latest
+      steps:
+        #Attempt to restore the cache
+        - name: Restore cache
+          id:  demo-cache
+          uses: actions/cache@638ed79f9dc94c1de1baef91bcab5edaa19451f4
+          with:
+            path: demo-cache
+            key: demo-cache_v1
+    
+        # papulate the cache if it was not restored
+        - name: Papulate cache
+          if: steps.demo-cache.outputs.cache-hit != 'true'
+          run: |
+            echo "Cache miss, populating cache..."
+            mkdir -p demo-cache
+            echo "This is a demo cache file." > demo-cache/demo.txt
+
+        # Save the cache
+        - name: Save cache
+          if: steps.demo-cache.outputs.cache-hit != 'true'
+          uses: actions/cache@638ed79f9dc94c1de1baef91bcab5edaa19451f4
+          with:
+            path: demo-cache
+            key: demo-cache_v1
+
+        - name: Verify cache
+          run: |
+            if [ -f demo-cache/demo.txt ]; then
+              echo "Cache file exists."
+            else
+              echo "Cache file does not exist."
+              exit 1
+            fi
+
