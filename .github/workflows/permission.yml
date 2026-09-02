@@ -89,6 +89,12 @@ jobs:
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+            - name: Ensure label "write-test" does not exist
+              run: |
+               gh label create "write-test" --description "write test marker" --color "ededed" || true
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
             - name: Add label to the PR (expected to succeed due to write permissions)
               run: gh pr edit ${{ github.event.pull_request.number }} --add-label "write-test"
               env:
