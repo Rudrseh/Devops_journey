@@ -3,7 +3,7 @@ name: Triggers and Filters
 on: 
     push:
         branches:
-            - "staging/*"
+            - "Github-Actions/03-core-features/filters/*"
 
     pull_request:
         types:
