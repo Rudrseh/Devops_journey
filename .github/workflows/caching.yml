@@ -48,7 +48,7 @@ jobs:
       runs-on: ubuntu-latest
       defaults:
         run: 
-           working-directory: advanced-features/caching/minimal-node-project
+           working-directory: Github-Actions/advanced-features/caching/minimal-node-project
 
       steps:
         - uses: actions/checkout@ff7abcd0c3c05ccf6adc123a8cd1fd4fb30fb493 # v5.0.0
@@ -56,7 +56,7 @@ jobs:
           with:
             node-version: 20
             cache: 'npm'
-            cache-dependency-path: advanced-features/caching/minimal-node-project/package-lock.json
+            cache-dependency-path: Github-Actions/advanced-features/caching/minimal-node-project/package-lock.json
         - name: Install dependencies
           run: npm ci --prefer-offline  --no-audit --progress=false
         - name: List First few modules
