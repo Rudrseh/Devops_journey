@@ -50,6 +50,17 @@ jobs:
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+            - name: Ensure label "read-only-test" does not exist
+              run: |
+                if gh label list | grep -q "read-only-test"; then
+                  echo "Label 'read-only-test' already exists. Deleting it for test."
+                  gh label delete "read-only-test" --confirm
+                else
+                  echo "Label 'read-only-test' does not exist. Proceeding with test."
+                fi
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
             - name: Attempt to add label (expected to fail due to read-only permissions)
               run: gh pr edit ${{ github.event.pull_request.number }} --add-label "read-only-test"
               env:
